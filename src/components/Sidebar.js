@@ -5,12 +5,22 @@ import { Link } from 'react-router-dom';
 import home from '../img/home.svg';
 
 export default class Sidebar extends Component {
+
+	state = {
+		activeMenuIndex: 0
+	}
+
 	render() {
 		const { sidebarData } = this.props;
 		const actionItems = sidebarData.actions.map((item, index) => {
+			const isActive = item.id === this.state.activeMenuIndex
 			return (
-				<StyledLink to={item.path} key={item.id}>
-					<SidebarItem>
+				<StyledLink 
+					key={item.id}
+					to={item.path} 
+					onClick={ ()=> this.setState( {activeMenuIndex: item.id} ) }
+				>
+					<SidebarItem >
 						<SidebarItemImg src={home} alt="home"></SidebarItemImg> 
 						<SidebarName>{item.name}</SidebarName>
 					</SidebarItem>
@@ -66,6 +76,7 @@ const StyledLink = styled(Link)`
 const SidebarItem = styled.li`
 	
 	color: #039be5;
+	background-color: ${props => props.active ? 'blue' : ''};
 	border-bottom: ${props => props.primary ? '1px solid lightgrey' : ''};
 	padding: ${props => props.primary ? '20px 20px' : '10px 20px'};
 	display: flex;
