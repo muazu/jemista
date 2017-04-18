@@ -1,0 +1,128 @@
+/* Fonts */
+@font-face {
+    font-family: "GT Eesti Display";
+    font-weight: 700;
+    src: url("./fonts/GT-Eesti-Display-Bold-2.ttf") format("truetype");
+}
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 300;
+    src: url("./fonts/MaisonNeue-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 400;
+    src: url("./fonts/MaisonNeue-Book.ttf") format("truetype");
+}
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 500;
+    src: url("./fonts/MaisonNeue-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 500;
+    font-style: italic;
+    src: url("./fonts/MaisonNeue-MediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 700;
+    src: url("./fonts/MaisonNeue-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "MG Maison Neue";
+    font-weight: 700;
+    font-style: italic;
+    src: url("./fonts/MaisonNeue-BoldItalic.ttf") format("truetype");
+}
+
+
+
+.gt-ee-bold-xl {
+    font-family: "GT Eesti Display";
+    font-weight: 700;
+    line-height: 1.0;
+}
+.gt-ee-bold-l {
+    font-family: "GT Eesti Display";
+    font-weight: 700;
+    line-height: 1.2;
+}
+.gt-ee-bold-m {
+    font-family: "GT Eesti Display";
+    font-weight: 700;
+    line-height: 1.2;
+}
+.gt-ee-bold-s {
+    font-family: "GT Eesti Display";
+    font-weight: 700;
+    line-height: 1.2;
+}
+.mg-mn-light-xl {
+    font-family: "MG Maison Neue";
+    font-weight: 300;
+    line-height: 1.5;
+}
+.mg-mn-light-l {
+    font-family: "MG Maison Neue";
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.mg-mn-bold-m {
+    font-family: "MG Maison Neue";
+    font-weight: 700;
+    line-height: 1.5;
+}
+.mg-mn-book-l {
+    font-family: "MG Maison Neue";
+    font-weight: 400;
+    line-height: 1.5;
+}
+.mg-mn-book-m {
+    font-family: "MG Maison Neue";
+    font-weight: 400;
+    line-height: 1.5;
+}
+.mg-mn-book-s {
+    font-family: "MG Maison Neue";
+    font-weight: 400;
+    line-height: 1.5;
+}
+.mg-mn-medium-s {
+    font-family: "MG Maison Neue";
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/*
+GT Eesti Display
+----------------
+Bold 68 (section hed)
+Bold 34 (subsection hed, lateral)
+Bold 21 (subsection #, subsection2 hed)
+Bold 16 (footer link hed, email signup hed)
+
+MG Maison Neue
+--------------
+Light 23 (billboard graf, email signup input)
+Light 18 (subsection graf on dark)
+Book 18 (subsection graf)
+Book 14 (header links, cta, footer link)
+Book 12 (footer tiny link)
+Medium 12 (section subhed, subsection subhed)
+*/
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "MG Maison Neue", "Roboto", "GT Eesti Display", sans-serif;
+}
