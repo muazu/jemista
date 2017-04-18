@@ -63,6 +63,7 @@ const StyledLink = styled(Link)`
   	text-decoration: none;
 `;
 const SidebarItem = styled.li`
+	
 	color: #039be5;
 	border-bottom: ${props => props.primary ? '1px solid lightgrey' : ''};
 	padding: ${props => props.primary ? '20px 20px' : '10px 20px'};
@@ -73,10 +74,13 @@ const SidebarItem = styled.li`
   	}
 `;
 const SidebarItemImg = styled.img`
+	
 `;
 const SidebarName = styled.div`
-	padding: 2%;
+	
+	padding: 4% 2% 2% 2%;
 	margin-left: 5%;
+	font-size: 0.87em;
 `;
 
 

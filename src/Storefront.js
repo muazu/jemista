@@ -33,35 +33,33 @@ export default Storefront;
 const Wrapper = styled.div`
 `;
 const QuickPanel = styled.div`
-	padding: 3%;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	background-color: white;
-	height: 30%;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 `;
 const Desc = styled.div`	
 	color: hsla(0, 0%, 0%, 0.54);
 	font-size: 3vmin;
-	margin: 2% 2%;
+	padding: 40px;
 `;
 const QuickActionsBx = styled.div`
-	
 	display: flex;
 	justify-content: space-around;
-	padding: 2% 10%;
 `;
 const QuickAction = styled.div`
-	
-	padding: 2%;
-	flex-basis: 33%;
+	padding-bottom: 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
 `;
 const Thumbnail = styled.div`
-	height: 80px;
-	width: 80px;
 	border-radius: 50px;
-	margin: 0 auto;
+	width: 80px;
+	height: 80px; 
 	background-color: ${props => props.color};
 	display: flex;
 	justify-content: center;
@@ -74,10 +72,9 @@ const Thumbnail = styled.div`
     transform: translateY(-5%);
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
-
 `;
 const ActionDesc = styled.div`
-	margin: 15% 2% 0%; 2%;
+	margin-top: 30px;
 	color: rgba(0,0,0,0.87);
 	font-weight: 500;
 	font-size: 16px;
