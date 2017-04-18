@@ -18,14 +18,20 @@ import {
 } from 'react-router-dom'
 
 export default class App extends Component {
+
+	state = {
+		sidebar: {
+			actions: [
+				{ id: 1, name: 'New Order', primary: false, path: '/new-order' },
+				{ id: 2, name: 'Current Orders', primary: false, path: '/current-orders' },
+				{ id: 3, name: 'Analytics', primary: false, path: '/analytics' },
+			]
+		}
+	}
+
 	render() {
 
-		const menuItems = [
-		  { id: 1, name: 'Store Front', primary: true, path: '/' },
-		  { id: 3, name: 'New Order', primary: false, path: '/new-order' },
-		  { id: 4, name: 'Current Orders', primary: false, path: '/current-orders' },
-		  { id: 5, name: 'Analytics', primary: false, path: '/analytics' },
-		]
+		const { sidebar } = this.state;
 
 		return(
 			<Router>
@@ -37,7 +43,7 @@ export default class App extends Component {
 							<AppbarImg src={userProfile} alt="user"></AppbarImg>
 						</AppItems>
 					</Appbar>
-					<Sidebar menuItems={menuItems} />
+					<Sidebar sidebarData={sidebar} />
 					<Main>
 						<FeatureBar>Store Front</FeatureBar>
 						<Route exact path="/" component={Storefront}/>

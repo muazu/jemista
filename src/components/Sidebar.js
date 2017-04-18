@@ -6,8 +6,8 @@ import home from '../img/home.svg';
 
 export default class Sidebar extends Component {
 	render() {
-		const { menuItems } = this.props;
-		const sidebarItems = menuItems.map((item, index) => {
+		const { sidebarData } = this.props;
+		const actionItems = sidebarData.actions.map((item, index) => {
 			return (
 				<StyledLink to={item.path} key={item.id}>
 					<SidebarItem>
@@ -29,7 +29,8 @@ export default class Sidebar extends Component {
 						</SidebarItem>
 					</StyledLink>
 					<Label>Actions</Label>		
-					{sidebarItems}
+					{actionItems}
+					<Label>Manage</Label>
 				</List>
 			</Wrapper>
 		)
