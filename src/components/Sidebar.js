@@ -6,21 +6,17 @@ import home from '../img/home.svg';
 
 export default class Sidebar extends Component {
 
-	state = {
-		activeMenuIndex: 0
-	}
-
 	render() {
-		const { sidebarData } = this.props;
-		const actionItems = sidebarData.actions.map((item, index) => {
-			const isActive = item.id === this.state.activeMenuIndex
+		const { sidebarData, activeMenuId, handleMenuClick} = this.props;
+		const actionItems = sidebarData.actions.map( item => {
+			const isActive = item.id === activeMenuId;
 			return (
 				<StyledLink 
 					key={item.id}
 					to={item.path} 
-					onClick={ ()=> this.setState( {activeMenuIndex: item.id} ) }
+					onClick={ () => handleMenuClick(item.id) }
 				>
-					<SidebarItem >
+					<SidebarItem active={isActive} >
 						<SidebarItemImg src={home} alt="home"></SidebarItemImg> 
 						<SidebarName>{item.name}</SidebarName>
 					</SidebarItem>
@@ -33,7 +29,10 @@ export default class Sidebar extends Component {
 			<Wrapper>
 				<List>
 					<StyledLink to="/">
-						<SidebarItem primary>
+						<SidebarItem 
+							primary={true}
+							onClick={ () => handleMenuClick(0) }
+						>
 							<SidebarItemImg src={home} alt="home"></SidebarItemImg> 
 							<SidebarName>Store Front</SidebarName>
 						</SidebarItem>
@@ -76,7 +75,8 @@ const StyledLink = styled(Link)`
 const SidebarItem = styled.li`
 	
 	color: #039be5;
-	background-color: ${props => props.active ? 'blue' : ''};
+	background-color: ${props => props.active ? 'lightgrey' : ''};
+	border-right: ${props => props.active ? '5px solid #039be5' : ''};
 	border-bottom: ${props => props.primary ? '1px solid lightgrey' : ''};
 	padding: ${props => props.primary ? '20px 20px' : '10px 20px'};
 	display: flex;

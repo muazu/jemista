@@ -25,8 +25,13 @@ export default class App extends Component {
 				{ id: 2, name: 'Current Orders', primary: false, path: '/current-orders' },
 				{ id: 3, name: 'Analytics', primary: false, path: '/analytics' },
 			]
-		}
+		},
+		activeMenuId: 0
 	}
+
+	handleMenuClick = (activeMenuId) => {
+		this.setState( {activeMenuId} );
+	};
 
 	render() {
 
@@ -42,7 +47,11 @@ export default class App extends Component {
 							<AppbarImg src={userProfile} alt="user"></AppbarImg>
 						</AppItems>
 					</Appbar>
-					<Sidebar sidebarData={sidebar} />
+					<Sidebar 
+						sidebarData={sidebar}
+						handleMenuClick={this.handleMenuClick} 
+						activeMenuId={this.state.activeMenuId}
+					/>
 					<Main>
 						<FeatureBar>Store Front</FeatureBar>
 						<Route exact path="/" component={Storefront}/>
