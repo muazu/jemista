@@ -24,7 +24,6 @@ export default class Sidebar extends Component {
 			)
 		})
 
-
 		return(
 			<Wrapper>
 				<List>

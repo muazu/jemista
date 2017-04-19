@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Analytics = () => (
-	<div>
-		This is the analytics screen!
-	</div>
-)
+export default class Analytics extends Component {
 
-export default Analytics;
+	componentWillMount() {
+		this.props.handleMenuClick(3);
+	}
+
+	render() {
+		return(
+			<div>This is the the analytics screen!</div>
+		)
+	}
+}

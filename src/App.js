@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-
 import userProfile from './img/user-profile.png';
 import moreVert from './img/more-vert.png';
 
@@ -54,10 +53,26 @@ export default class App extends Component {
 					/>
 					<Main>
 						<FeatureBar>Store Front</FeatureBar>
-						<Route exact path="/" component={Storefront}/>
-						<Route path="/new-order" component={NewOrder}/>
-						<Route path="/current-orders" component={CurrentOrders}/>
-						<Route path="/Analytics" component={Analytics}/>
+						<Route exact path="/" render={ () => (
+							<Storefront 
+								handleMenuClick={this.handleMenuClick}
+							/>
+							)} />
+						<Route path="/new-order" render={ () => (
+							<NewOrder 
+								handleMenuClick={this.handleMenuClick}
+							/>
+							)} />
+						<Route path="/current-orders" render={ () => (
+							<CurrentOrders 
+								handleMenuClick={this.handleMenuClick}
+							/>
+							)}/>
+						<Route path="/Analytics" render={ () => (
+							<Analytics 
+								handleMenuClick={this.handleMenuClick}	
+							/>
+							)}/>
 					</Main>
 				</Wrapper>	
 			</Router>

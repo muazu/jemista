@@ -1,33 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import addCircle from './img/add-circle.png';
 import motorcycle from './img/motorcycle.png';
 import pieChart from './img/pie-chart.png';
 
-const Storefront = () => (
-	<Wrapper>
-		<QuickPanel>
-			<Desc>Welcome to your StoreFront!</Desc>
-			<QuickActionsBx>
-				<QuickAction>
-					<Thumbnail color="#00b8d4"><ActionImg src={addCircle} alt="motorcycle"></ActionImg></Thumbnail>
-					<ActionDesc>Start a new order</ActionDesc>
-				</QuickAction>
-				<QuickAction>
-					<Thumbnail color="#00bfa5"><ActionImg src={motorcycle} alt="motorcycle"></ActionImg></Thumbnail>
-					<ActionDesc>Open and recent orders</ActionDesc>
-				</QuickAction>
-				<QuickAction>
-					<Thumbnail color="#c51162"><ActionImg src={pieChart} alt="motorcycle"></ActionImg></Thumbnail>
-					<ActionDesc>Analytics</ActionDesc>
-				</QuickAction>
-			</QuickActionsBx>
-		</QuickPanel>
-	</Wrapper>
-)
+export default class Storefront extends Component {
 
-export default Storefront;
+	componentWillMount() {
+		this.props.handleMenuClick(0);
+	}
+
+	render() {
+
+		const { handleMenuClick } = this.props;
+
+		return(
+			<Wrapper>
+				<QuickPanel>
+					<Desc>Welcome to your StoreFront!</Desc>
+					<QuickActionsBx>
+						<QuickAction>
+							<Link to="/new-order" onClick={ () => handleMenuClick(1) }>
+								<Thumbnail color="#00b8d4"><ActionImg src={addCircle} alt="addCircle"></ActionImg></Thumbnail>
+							</Link>
+							<ActionDesc>Start a new order</ActionDesc>
+						</QuickAction>
+						<QuickAction>
+							<Link to="/current-orders" onClick={ () => handleMenuClick(2) }>
+								<Thumbnail color="#00bfa5"><ActionImg src={motorcycle} alt="motorcycle"></ActionImg></Thumbnail>
+							</Link>
+							<ActionDesc>Open and recent orders</ActionDesc>
+						</QuickAction>
+						<QuickAction>
+							<Link to="/analytics" onClick={ () => handleMenuClick(3) }>
+								<Thumbnail color="#c51162"><ActionImg src={pieChart} alt="pieChart"></ActionImg></Thumbnail>
+							</Link>
+							<ActionDesc>Analytics</ActionDesc>
+						</QuickAction>
+					</QuickActionsBx>
+				</QuickPanel>
+			</Wrapper>
+		)
+	}
+}
+
 
 
 const Wrapper = styled.div`

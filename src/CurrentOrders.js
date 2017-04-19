@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const CurrentOrders = () => (
-	<div>
-		This is the current Order screen!
-	</div>
-)
+export default class CurrentOrders extends Component {
 
-export default CurrentOrders;
+	componentWillMount() {
+		this.props.handleMenuClick(2);
+	}
+
+	render() {
+		return(
+			<div>This is the the current orders screen!</div>
+		)
+	}
+}

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const NewOrder = () => (
-	<div>This is the new order screen!</div>
-)
+export default class NewOrder extends Component {
 
-export default NewOrder;
+	componentWillMount() {
+		this.props.handleMenuClick(1);
+	}
+
+	render() {
+		return(
+			<div>This is the the new order screen!</div>
+		)
+	}
+}
