@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import home from '../img/home.svg';
@@ -72,23 +72,28 @@ const StyledLink = styled(Link)`
   	text-decoration: none;
 `;
 const SidebarItem = styled.li`
-	
 	color: #039be5;
-	background-color: ${props => props.active ? 'lightgrey' : ''};
-	border-right: ${props => props.active ? '5px solid #039be5' : ''};
-	border-bottom: ${props => props.primary ? '1px solid lightgrey' : ''};
-	padding: ${props => props.primary ? '20px 20px' : '10px 20px'};
+	padding:  10px 20px;
 	display: flex;
 	align-items: center;
 	&:hover {
 		background-color: lightgrey;
   	}
+
+	${props => props.primary && css`
+    	border-bottom: 1px solid lightgrey;
+    	padding: 20px 20px;
+  	`}
+
+	${props => props.active && css`
+    	background-color: lightgrey;
+    	border-right: 5px solid #039be5;
+  	`}
 `;
 const SidebarItemImg = styled.img`
 	
 `;
 const SidebarName = styled.div`
-	
 	padding: 4% 2% 2% 2%;
 	margin-left: 5%;
 	font-size: 0.87em;
