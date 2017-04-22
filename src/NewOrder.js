@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import TextField from 'material-ui/TextField';
-import between, { sizes } from './helpers/style';
+import between, { sizes } from './helpers/styles';
 
 export default class NewOrder extends Component {
 
