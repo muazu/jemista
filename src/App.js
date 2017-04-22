@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Media from 'react-media'
 
+
+import menu from './img/menu.png';
 import userProfile from './img/user-profile.png';
 import moreVert from './img/more-vert.png';
 
@@ -9,6 +12,7 @@ import NewOrder from './NewOrder';
 import CurrentOrders from './CurrentOrders';
 import Analytics from './Analytics';
 import Sidebar from './components/Sidebar';
+import between, { sizes } from './helpers/styles';
 
 import {
   BrowserRouter as Router,
@@ -41,16 +45,21 @@ export default class App extends Component {
 				<Wrapper>
 					<Appbar>
 						<AppItems>
+							<Media query={`(max-width: ${sizes.pad})`} render={() => (
+          						<AppbarImg src={menu} alt="menu"></AppbarImg>
+        					)}/>
 							<Logo>Jemista</Logo>
 							<AppbarImg src={moreVert} alt="user"></AppbarImg>
 							<AppbarImg src={userProfile} alt="user"></AppbarImg>
 						</AppItems>
 					</Appbar>
-					<Sidebar 
-						sidebarData={sidebar}
-						handleMenuClick={this.handleMenuClick} 
-						activeMenuId={this.state.activeMenuId}
-					/>
+					<Media query={`(min-width: ${sizes.pad})`} render={() => (
+          				<Sidebar 
+							sidebarData={sidebar}
+							handleMenuClick={this.handleMenuClick} 
+							activeMenuId={this.state.activeMenuId}
+						/>
+        			)}/>
 					<Main>
 						<FeatureBar>Store Front</FeatureBar>
 						<Route exact path="/" render={ () => (
@@ -75,8 +84,7 @@ export default class App extends Component {
 							)}/>
 					</Main>
 				</Wrapper>	
-			</Router>
-			
+			</Router>	
 		)
 	}
 }
@@ -97,12 +105,19 @@ const Appbar = styled.div`
 	color: ghostwhite;
 `;
 const AppItems = styled.div`
+	
 	display: flex;
 	align-items: center;
 `;
 const Logo = styled.div`
+	
 	font-size: 25px;
 	flex: 1;
+	text-align: center;
+	@media (min-width: ${sizes.pad}) {
+	    text-align: left;
+	}
+	
 `;
 const AppbarImg = styled.img`
 	height: 35px;
@@ -114,11 +129,15 @@ const Main = styled.div`
 	background-color: #cfd8dc;
 	top:55px;
 	flex: 1;
-	margin-left: 240px;
 	position: relative;
 	overflow: auto;
     z-index: 1;
     width: auto;
+
+	@media (min-width: ${sizes.pad}) {
+	    margin-left: 240px;
+	}
+
 `;
 const FeatureBar = styled.div`
 	background-color: #039be5;
