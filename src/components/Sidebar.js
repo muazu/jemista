@@ -91,12 +91,10 @@ const SidebarItem = styled.li`
   	`}
 `;
 const SidebarItemImg = styled.img`
-	
 `;
 const SidebarName = styled.div`
+	display:block;
 	padding: 4% 2% 2% 2%;
 	margin-left: 5%;
 	font-size: 0.87em;
 `;
-
-
