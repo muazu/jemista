@@ -90,7 +90,7 @@ export default class App extends Component {
 }
 
 const Wrapper = styled.div`
-	min-height: 100vh;
+	min-height: calc(100vh - 55px);
 	display: flex;
 `;
 const Appbar = styled.div`
