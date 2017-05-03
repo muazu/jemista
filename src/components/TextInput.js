@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import { phoneFormat, phoneUnformat } from '../helpers/func';
 
 export default class TextInput extends Component {
 
@@ -9,18 +10,32 @@ export default class TextInput extends Component {
 	}
 
 	render() {
-		const { label } = this.props;
+		
+		const { 
+			label, 
+			fontSize,
+			placeholder, 
+			displayLabel } = this.props;
+
 		return(
 			<Wrapper>
 				<Input 
-					type="text" 
+					type="text"
+					fontSize={this.props.fontSize} 
+					placeholder={this.props.placeholder}
 					onFocus={ () => this.setState( {focus: true} )}
 					onBlur={ () => this.setState( {focus: false} )}
-					onChange={ (event) => this.setState( {userTxt: event.target.value} )}
+					onChange={ (event) => {
+						this.setState( {userTxt: phoneUnformat(event.target.value)} )
+						this.props.handleInputChg(phoneUnformat(event.target.value))
+					}}
+					value={phoneFormat(this.state.userTxt)}
 				/>
 				<Highlight active={this.state.focus}></Highlight>
 				<Bar active={this.state.focus || this.state.userTxt}></Bar>
 				<Label 
+					displayLabel={this.props.displayLabel}
+					fontSize={this.props.fontSize}
 					active={this.state.focus || this.state.userTxt}>
 					{label}
 				</Label>
@@ -30,23 +45,30 @@ export default class TextInput extends Component {
 }
 
 const Wrapper = styled.div`
-	border: 5px solid gold;
+	
 	display: flex;
+	height: 100%;
 	flex-direction: column;;
 	position:relative; 
-	margin-bottom:45px;
+	box-sizing : border-box;
 `;
 const Input = styled.input`
-	font-size:18px;
+	color:#999; 
 	padding:10px 10px 10px 5px;
 	display:block;
-	
+	height: 100%;
 	border:none;
+	background: none;
 	box-sizing : border-box;
 	border-bottom:1px solid #757575;
+	font-size: ${props => props.fontSize ? props.fontSize : '18px'};
 
 	&:focus {
 		outline:none;
+  	}
+
+  	&::placeholder {
+  		color:#999; 
   	}
 `;
 const Bar = styled.span`
@@ -93,8 +115,9 @@ const Highlight = styled.span`
 	`}
 `;
 const Label = styled.label`
+	display: ${props => props.displayLabel ? '' : 'none'};
 	color:#999; 
-	font-size:18px;
+	font-size: ${props => props.fontSize};
 	font-weight:normal;
 	position:absolute;
 	pointer-events:none;

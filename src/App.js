@@ -29,16 +29,58 @@ export default class App extends Component {
 				{ id: 3, name: 'Analytics', primary: false, path: '/analytics' },
 			]
 		},
-		activeMenuId: 0
+		activeMenuId: 0,
+		userInput: '',
+		customers: {
+			'3109855272': {
+				phoneNum: '3109855272',
+				firstName: 'Nikolaos',
+				lastName: 'Pavlou',
+				streetAddress: '30 Hemway Ter',
+				cityAddress: 'San Francisco',
+				stateAddress: 'CA',
+				countryAddress: 'USA'
+			},
+			'3238414872': {
+				phoneNum: '3238414872',
+				firstName: 'Ashkan',
+				lastName: 'Goshtasb',
+				streetAddress: '11740 Wilshire Blvd',
+				cityAddress: 'Los Angeles',
+				stateAddress: 'CA',
+				countryAddress: 'USA'	
+			},
+			'3109636102': {
+				phoneNum: '3109636102',
+				firstName: 'Andrew',
+				lastName: 'Dilfer',
+				streetAddress: '446 Monterey Blvd',
+				cityAddress: 'Hermosa Beach',
+				stateAddress: 'CA',
+				countryAddress: 'USA'	
+			},
+		}
 	}
+
 
 	handleMenuClick = (activeMenuId) => {
 		this.setState( {activeMenuId} );
-	};
+	}
+
+	handleInputChg = (userInput) => {
+		this.setState( {userInput} )
+	}
 
 	render() {
 
-		const { sidebar } = this.state;
+		const { 
+			sidebar,
+			userInput,
+			activeMenuId,
+			customers } = this.state;
+
+			const isSearched = userInput.length === 10;
+			const customerId = isSearched ? userInput : '';
 
 		return(
 			<Router>
@@ -57,7 +99,7 @@ export default class App extends Component {
           				<Sidebar 
 							sidebarData={sidebar}
 							handleMenuClick={this.handleMenuClick} 
-							activeMenuId={this.state.activeMenuId}
+							activeMenuId={activeMenuId}
 						/>
         			)}/>
 					<Main>
@@ -70,6 +112,9 @@ export default class App extends Component {
 						<Route path="/new-order" render={ () => (
 							<NewOrder 
 								handleMenuClick={this.handleMenuClick}
+								handleInputChg={this.handleInputChg}
+								isSearched={isSearched}
+								customer={customers[customerId]}
 							/>
 							)} />
 						<Route path="/current-orders" render={ () => (
